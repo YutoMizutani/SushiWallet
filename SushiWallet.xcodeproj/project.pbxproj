@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E4E10685E553B406C611E35 /* Pods_SushiWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE0D366A96C45294340097E /* Pods_SushiWallet.framework */; };
 		99036C69225447250007F86E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99036C68225447250007F86E /* AppDelegate.swift */; };
 		99036C6B225447250007F86E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99036C6A225447250007F86E /* ViewController.swift */; };
 		99036C6E225447250007F86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99036C6C225447250007F86E /* Main.storyboard */; };
@@ -14,6 +15,8 @@
 		99036C73225447260007F86E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99036C71225447260007F86E /* LaunchScreen.storyboard */; };
 		99036C7E225447260007F86E /* SushiWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99036C7D225447260007F86E /* SushiWalletTests.swift */; };
 		99036C89225447260007F86E /* SushiWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99036C88225447260007F86E /* SushiWalletUITests.swift */; };
+		E661AC42BF40B6793FA08338 /* Pods_SushiWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5642322FD978A3C262576FF9 /* Pods_SushiWalletTests.framework */; };
+		F34CD1B8B428A4477052C532 /* Pods_SushiWalletUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A342983E643DF0F0A697AA /* Pods_SushiWalletUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B7027CAC3FF4B9F71CF5C5F /* Pods-SushiWalletUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SushiWalletUITests.release.xcconfig"; path = "Target Support Files/Pods-SushiWalletUITests/Pods-SushiWalletUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3A440D8057D476F733B46F96 /* Pods-SushiWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SushiWalletTests.debug.xcconfig"; path = "Target Support Files/Pods-SushiWalletTests/Pods-SushiWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5642322FD978A3C262576FF9 /* Pods_SushiWalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SushiWalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BC4330B43955727B20064D8 /* Pods-SushiWalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SushiWalletTests.release.xcconfig"; path = "Target Support Files/Pods-SushiWalletTests/Pods-SushiWalletTests.release.xcconfig"; sourceTree = "<group>"; };
+		7BFFC2A6D3402B571F03E50C /* Pods-SushiWalletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SushiWalletUITests.debug.xcconfig"; path = "Target Support Files/Pods-SushiWalletUITests/Pods-SushiWalletUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		99036C65225447250007F86E /* SushiWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SushiWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99036C68225447250007F86E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99036C6A225447250007F86E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +55,10 @@
 		99036C84225447260007F86E /* SushiWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SushiWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99036C88225447260007F86E /* SushiWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SushiWalletUITests.swift; sourceTree = "<group>"; };
 		99036C8A225447260007F86E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FE0D366A96C45294340097E /* Pods_SushiWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SushiWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4B18160E612444C1155D5D5 /* Pods-SushiWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SushiWallet.release.xcconfig"; path = "Target Support Files/Pods-SushiWallet/Pods-SushiWallet.release.xcconfig"; sourceTree = "<group>"; };
+		C1A342983E643DF0F0A697AA /* Pods_SushiWalletUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SushiWalletUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E36E8400BD3278616FC9414F /* Pods-SushiWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SushiWallet.debug.xcconfig"; path = "Target Support Files/Pods-SushiWallet/Pods-SushiWallet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E4E10685E553B406C611E35 /* Pods_SushiWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E661AC42BF40B6793FA08338 /* Pods_SushiWalletTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F34CD1B8B428A4477052C532 /* Pods_SushiWalletUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		625799F2AFD16F27E93247F4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E36E8400BD3278616FC9414F /* Pods-SushiWallet.debug.xcconfig */,
+				B4B18160E612444C1155D5D5 /* Pods-SushiWallet.release.xcconfig */,
+				3A440D8057D476F733B46F96 /* Pods-SushiWalletTests.debug.xcconfig */,
+				7BC4330B43955727B20064D8 /* Pods-SushiWalletTests.release.xcconfig */,
+				7BFFC2A6D3402B571F03E50C /* Pods-SushiWalletUITests.debug.xcconfig */,
+				1B7027CAC3FF4B9F71CF5C5F /* Pods-SushiWalletUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		99036C5C225447250007F86E = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +110,8 @@
 				99036C7C225447260007F86E /* SushiWalletTests */,
 				99036C87225447260007F86E /* SushiWalletUITests */,
 				99036C66225447250007F86E /* Products */,
+				625799F2AFD16F27E93247F4 /* Pods */,
+				ADA67C09E12C2095DD0E6245 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +156,16 @@
 			path = SushiWalletUITests;
 			sourceTree = "<group>";
 		};
+		ADA67C09E12C2095DD0E6245 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FE0D366A96C45294340097E /* Pods_SushiWallet.framework */,
+				5642322FD978A3C262576FF9 /* Pods_SushiWalletTests.framework */,
+				C1A342983E643DF0F0A697AA /* Pods_SushiWalletUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +173,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 99036C8D225447260007F86E /* Build configuration list for PBXNativeTarget "SushiWallet" */;
 			buildPhases = (
+				CD4881A741EBCDEC26AE2C75 /* [CP] Check Pods Manifest.lock */,
 				99036C61225447250007F86E /* Sources */,
 				99036C62225447250007F86E /* Frameworks */,
 				99036C63225447250007F86E /* Resources */,
+				93795A57263C6D3A5F76B465 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +192,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 99036C90225447260007F86E /* Build configuration list for PBXNativeTarget "SushiWalletTests" */;
 			buildPhases = (
+				F149EDB941A70FC9C271F316 /* [CP] Check Pods Manifest.lock */,
 				99036C75225447260007F86E /* Sources */,
 				99036C76225447260007F86E /* Frameworks */,
 				99036C77225447260007F86E /* Resources */,
@@ -167,6 +211,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 99036C93225447260007F86E /* Build configuration list for PBXNativeTarget "SushiWalletUITests" */;
 			buildPhases = (
+				222D34EEFD6D310B51655191 /* [CP] Check Pods Manifest.lock */,
 				99036C80225447260007F86E /* Sources */,
 				99036C81225447260007F86E /* Frameworks */,
 				99036C82225447260007F86E /* Resources */,
@@ -250,6 +295,97 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		222D34EEFD6D310B51655191 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SushiWalletUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93795A57263C6D3A5F76B465 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SushiWallet/Pods-SushiWallet-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BitcoinKit/BitcoinKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BitcoinKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SushiWallet/Pods-SushiWallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD4881A741EBCDEC26AE2C75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SushiWallet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F149EDB941A70FC9C271F316 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SushiWalletTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		99036C61225447250007F86E /* Sources */ = {
@@ -430,6 +566,7 @@
 		};
 		99036C8E225447260007F86E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E36E8400BD3278616FC9414F /* Pods-SushiWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -448,6 +585,7 @@
 		};
 		99036C8F225447260007F86E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4B18160E612444C1155D5D5 /* Pods-SushiWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -466,6 +604,7 @@
 		};
 		99036C91225447260007F86E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A440D8057D476F733B46F96 /* Pods-SushiWalletTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -487,6 +626,7 @@
 		};
 		99036C92225447260007F86E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BC4330B43955727B20064D8 /* Pods-SushiWalletTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +648,7 @@
 		};
 		99036C94225447260007F86E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BFFC2A6D3402B571F03E50C /* Pods-SushiWalletUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -528,6 +669,7 @@
 		};
 		99036C95225447260007F86E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B7027CAC3FF4B9F71CF5C5F /* Pods-SushiWalletUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

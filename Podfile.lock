@@ -1,0 +1,16 @@
+PODS:
+  - BitcoinKit (1.0.2)
+
+DEPENDENCIES:
+  - BitcoinKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BitcoinKit
+
+SPEC CHECKSUMS:
+  BitcoinKit: 5502c14d72ab665fbe00dc72abd74439a38ef9bc
+
+PODFILE CHECKSUM: 4b957c89dcf730bfcabf8e19fd8a28bd2a7e7b1c
+
+COCOAPODS: 1.6.1
