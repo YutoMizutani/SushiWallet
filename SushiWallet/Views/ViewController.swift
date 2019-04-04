@@ -78,14 +78,12 @@ class ViewController: UIViewController {
 
         address
             .map { $0.generateQRCode() }
-            .debug()
             .unwrap()
             .bind(to: qrImageView.rx.image)
             .disposed(by: disposeBag)
 
         address
             .map { $0.value }
-            .debug()
             .bind(to: addressTextView.rx.text)
             .disposed(by: disposeBag)
 
@@ -100,14 +98,16 @@ class ViewController: UIViewController {
                 self.useCase.generateNewWallet()
                     .flatMap { [unowned self] wallet in self.useCase.saveCurrentWallet(wallet).map { wallet } }
             }
-            .subscribe(onNext: { [unowned self] in
-                self.regenerate($0)
+            .subscribe(onNext: { [weak self] in
+                self?.regenerate($0)
             })
             .disposed(by: disposeBag)
 
-        copyButton.rx.tap.asDriver()
-            .drive(onNext: { [unowned self] in
-                self.copy("Sushi")
+        copyButton.rx.tap.asObservable()
+            .withLatestFrom(address)
+            .map { $0.value }
+            .subscribe(onNext: { [weak self] in
+                self?.copy($0)
             })
             .disposed(by: disposeBag)
     }
