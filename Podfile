@@ -7,6 +7,10 @@ target 'SushiWallet' do
 
   # Pods for SushiWallet
   pod 'BitcoinKit'
+  pod 'RxCocoa'
+  pod 'RxDataSources'
+  pod 'RxSwift'
+  pod 'SVProgressHUD'
 
   target 'SushiWalletTests' do
     inherit! :search_paths

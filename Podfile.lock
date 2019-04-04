@@ -1,16 +1,39 @@
 PODS:
   - BitcoinKit (1.0.2)
+  - Differentiator (3.1.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxDataSources (3.1.0):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.5.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - BitcoinKit
+  - RxCocoa
+  - RxDataSources
+  - RxSwift
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BitcoinKit
+    - Differentiator
+    - RxCocoa
+    - RxDataSources
+    - RxSwift
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   BitcoinKit: 5502c14d72ab665fbe00dc72abd74439a38ef9bc
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 4b957c89dcf730bfcabf8e19fd8a28bd2a7e7b1c
+PODFILE CHECKSUM: 6cdff24dff287ff345f1d37c15a6cdef89447a16
 
 COCOAPODS: 1.6.1
