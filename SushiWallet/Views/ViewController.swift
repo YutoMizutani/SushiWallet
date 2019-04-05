@@ -99,7 +99,8 @@ class ViewController: UIViewController {
                     .flatMap { [unowned self] wallet in self.useCase.saveCurrentWallet(wallet).map { wallet } }
             }
             .subscribe(onNext: { [weak self] in
-                self?.regenerate($0)
+                self?.wallet.accept($0)
+                self?.showSuccess(with: Text.succeededToRegenerate)
             })
             .disposed(by: disposeBag)
 
@@ -108,6 +109,7 @@ class ViewController: UIViewController {
             .map { $0.value }
             .subscribe(onNext: { [weak self] in
                 self?.copy($0)
+                self?.showSuccess(with: Text.succeededToCopy)
             })
             .disposed(by: disposeBag)
     }
@@ -125,17 +127,14 @@ class ViewController: UIViewController {
         }, completion: nil)
     }
 
-    /// Regenerate wallet address
-    private func regenerate(_ wallet: Wallet) {
-        self.wallet.accept(wallet)
-        SVProgressHUD.showSuccess(withStatus: Text.succeededToRegenerate)
-        SVProgressHUD.dismiss(withDelay: 0.4)
-    }
-
-    /// Copy wallet address
+    /// Copy wallet address to clipboard
     private func copy(_ text: String) {
         UIPasteboard.general.string = text
-        SVProgressHUD.showSuccess(withStatus: Text.succeededToCopy)
+    }
+
+    /// Show success alert
+    private func showSuccess(with status: String) {
+        SVProgressHUD.showSuccess(withStatus: status)
         SVProgressHUD.dismiss(withDelay: 0.4)
     }
 }
