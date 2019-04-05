@@ -8,14 +8,29 @@
 
 import Foundation
 
-struct WalletUserDefaultDataStore {
-    private let wifKey = "wif"
+private enum Keys: String {
+    case wif, index
 
+    var key: String {
+        return rawValue
+    }
+}
+
+struct WalletUserDefaultDataStore {
     func setPrivateKeyWIF(_ wif: String) {
-        UserDefaults.standard.set(wif, forKey: wifKey)
+        UserDefaults.standard.set(wif, forKey: Keys.wif.key)
     }
 
     func getPrivateKeyWIF() -> String? {
-        return UserDefaults.standard.string(forKey: wifKey)
+        return UserDefaults.standard.string(forKey: Keys.wif.key)
+    }
+
+    func setCurrentIndex(_ index: UInt32) {
+        UserDefaults.standard.set(Int(index), forKey: Keys.index.key)
+    }
+
+    func getCurrentIndex() -> UInt32? {
+        guard UserDefaults.standard.object(forKey: Keys.index.key) != nil else { return nil }
+        return UInt32(UserDefaults.standard.integer(forKey: Keys.index.key))
     }
 }

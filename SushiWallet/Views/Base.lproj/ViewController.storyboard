@@ -18,18 +18,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance: 0 satoshi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmC-I8-bdT">
+                                <rect key="frame" x="136" y="54" width="142" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W7x-5l-ymb">
-                                <rect key="frame" x="57" y="74" width="300" height="300"/>
+                                <rect key="frame" x="57" y="84" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="W7x-5l-ymb" secondAttribute="height" multiplier="1:1" id="99U-JK-asR"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="oKI-Qu-jMa"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoA-2z-7cU">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="374"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="384"/>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="brH-Iq-CUB">
-                                <rect key="frame" x="0.0" y="374" width="414" height="52"/>
+                                <rect key="frame" x="0.0" y="384" width="414" height="52"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="SMu-qz-vOM"/>
@@ -38,31 +44,46 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hlg-Ui-6bH">
-                                <rect key="frame" x="0.0" y="434" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="444" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1RU-bo-K8b">
-                                        <rect key="frame" x="0.0" y="0.0" width="206.5" height="44"/>
-                                        <state key="normal" title="Regenerate"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="137.5" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Previous"/>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOf-km-Ck6">
-                                        <rect key="frame" x="206.5" y="0.0" width="1" height="44"/>
+                                        <rect key="frame" x="137.5" y="0.0" width="1" height="44"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="65f-VC-SEV"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXi-Wb-cSC">
+                                        <rect key="frame" x="138.5" y="0.0" width="137" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Next"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAt-kK-Nfe">
+                                        <rect key="frame" x="275.5" y="0.0" width="1" height="44"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="MLW-WG-ZTn"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5s-d3-TJB">
-                                        <rect key="frame" x="207.5" y="0.0" width="206.5" height="44"/>
+                                        <rect key="frame" x="276.5" y="0.0" width="137.5" height="44"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Copy"/>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="0NP-e7-lqT"/>
                                     <constraint firstItem="C5s-d3-TJB" firstAttribute="width" secondItem="1RU-bo-K8b" secondAttribute="width" id="EEG-Fw-Cgl"/>
+                                    <constraint firstItem="FXi-Wb-cSC" firstAttribute="width" secondItem="1RU-bo-K8b" secondAttribute="width" id="q3Q-cO-Wx3"/>
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ukd-hJ-GQf" customClass="TransactionHistoryTableView" customModule="SushiWallet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="478" width="414" height="384"/>
+                                <rect key="frame" x="0.0" y="488" width="414" height="374"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -70,18 +91,20 @@
                         <constraints>
                             <constraint firstItem="AoA-2z-7cU" firstAttribute="bottom" secondItem="brH-Iq-CUB" secondAttribute="top" id="7XV-yF-xOy"/>
                             <constraint firstItem="ukd-hJ-GQf" firstAttribute="top" secondItem="Hlg-Ui-6bH" secondAttribute="bottom" id="AHy-Op-F8T"/>
-                            <constraint firstItem="W7x-5l-ymb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" priority="750" id="AMv-de-4s5"/>
+                            <constraint firstItem="W7x-5l-ymb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="8:10" priority="750" id="AMv-de-4s5"/>
                             <constraint firstItem="brH-Iq-CUB" firstAttribute="top" secondItem="W7x-5l-ymb" secondAttribute="bottom" id="HyW-T8-H0y"/>
                             <constraint firstItem="brH-Iq-CUB" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="ImZ-td-9SF"/>
                             <constraint firstItem="AoA-2z-7cU" firstAttribute="centerX" secondItem="W7x-5l-ymb" secondAttribute="centerX" id="Jga-04-tB8"/>
                             <constraint firstItem="W7x-5l-ymb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="L1x-VV-cMq"/>
                             <constraint firstItem="ukd-hJ-GQf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MHR-Dl-eq4"/>
                             <constraint firstItem="AoA-2z-7cU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="PbQ-UJ-V4P"/>
+                            <constraint firstItem="zmC-I8-bdT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="UOm-Hz-ImD"/>
                             <constraint firstItem="brH-Iq-CUB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XQH-HW-8Dp"/>
-                            <constraint firstItem="W7x-5l-ymb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="bVJ-Af-6d1"/>
+                            <constraint firstItem="W7x-5l-ymb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="bVJ-Af-6d1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ukd-hJ-GQf" secondAttribute="bottom" id="bt9-w5-FOG"/>
                             <constraint firstItem="Hlg-Ui-6bH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dCX-b4-t48"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ukd-hJ-GQf" secondAttribute="trailing" id="dFy-aP-QuO"/>
+                            <constraint firstItem="zmC-I8-bdT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dMR-0r-w2R"/>
                             <constraint firstItem="AoA-2z-7cU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="daj-7C-T2X"/>
                             <constraint firstItem="Hlg-Ui-6bH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="rxR-dC-kCA"/>
                             <constraint firstItem="Hlg-Ui-6bH" firstAttribute="top" secondItem="brH-Iq-CUB" secondAttribute="bottom" constant="8" id="trl-rJ-0n7"/>
@@ -90,9 +113,11 @@
                     </view>
                     <connections>
                         <outlet property="addressTextView" destination="brH-Iq-CUB" id="ttZ-Ty-GRz"/>
+                        <outlet property="balanceLabel" destination="zmC-I8-bdT" id="L9L-BL-ioc"/>
                         <outlet property="copyButton" destination="C5s-d3-TJB" id="FYd-q2-eUv"/>
+                        <outlet property="nextButton" destination="FXi-Wb-cSC" id="HQP-ub-uoQ"/>
+                        <outlet property="previousButton" destination="1RU-bo-K8b" id="bVX-6a-0GK"/>
                         <outlet property="qrImageView" destination="W7x-5l-ymb" id="Air-Xf-BF0"/>
-                        <outlet property="regenerateButton" destination="1RU-bo-K8b" id="mCA-fS-tuG"/>
                         <outlet property="tableView" destination="ukd-hJ-GQf" id="fxo-Fc-tmA"/>
                         <outlet property="zoomButton" destination="AoA-2z-7cU" id="pLJ-cj-4Zf"/>
                     </connections>

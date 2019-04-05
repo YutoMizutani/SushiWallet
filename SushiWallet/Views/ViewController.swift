@@ -13,24 +13,27 @@ import SVProgressHUD
 import UIKit
 
 struct Text {
-    static let succeededToRegenerate: String = "再生成しました🍣"
+    static let succeededToChange: String = "アドレスが変更されました🍣"
     static let succeededToCopy: String = "コピーしました🍣"
 }
 
 class ViewController: UIViewController {
+    @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var qrImageView: UIImageView!
     @IBOutlet weak var zoomButton: UIButton!
     @IBOutlet weak var addressTextView: UITextView!
-    @IBOutlet weak var regenerateButton: UIButton!
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var copyButton: UIButton!
     @IBOutlet weak var tableView: TransactionHistoryTableView!
 
     private var imageHeightConstraint: NSLayoutConstraint!
     private let constraints: (min: CGFloat, max: CGFloat) = (100, 300)
 
-    private var wallet: PublishRelay<Wallet> = PublishRelay()
+    private var hdWallet: PublishRelay<HDWallet> = PublishRelay()
+    private var index: PublishRelay<UInt32> = PublishRelay()
 
-    private let useCase: WalletUseCase = BCHTestnetWalletUseCase()
+    private let useCase: HDWalletUseCase = BCHTestnetHDWalletUseCase()
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -54,26 +57,27 @@ class ViewController: UIViewController {
     private func configureBinding() {
         rx.viewWillAppear.take(1).mapToVoid()
             .subscribeOn(ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global()))
-            .flatMapLatest { [unowned self] in self.useCase.loadCurrentWallet().asObservable().materialize().take(1) }
-            .flatMapLatest { [unowned self] event -> Single<Wallet> in
+            .flatMapLatest { [unowned self] in self.useCase.loadHDWallet().asObservable().materialize().take(1) }
+            .flatMapLatest { [unowned self] event -> Single<(hdWallet: HDWallet, index: UInt32)> in
                 switch event {
                 case .next(let value):
                     return Single.just(value)
                 case .error:
-                    return self.useCase.generateNewWallet()
-                        .flatMap { [unowned self] wallet in self.useCase.saveCurrentWallet(wallet).map { wallet } }
+                    return self.useCase.generateNewHDWallet()
                 case .completed:
                     fatalError("Not allow complete")
                 }
             }
             .subscribe(onNext: { [weak self] in
-                self?.wallet.accept($0)
+                self?.hdWallet.accept($0.hdWallet)
+                self?.index.accept($0.index)
             })
             .disposed(by: disposeBag)
 
-        let address = wallet.asObservable()
-            .map { $0.publicKey.toCashaddr().description }
-            .map { BitcoinAddress($0) }
+        let address: Observable<BitcoinAddress> = Observable.combineLatest(hdWallet, index)
+            .map { try? $0.0.changeAddress(index: $0.1) }
+            .unwrap()
+            .map { BitcoinAddress($0.cashaddr) }
             .share(replay: 1)
 
         address
@@ -93,14 +97,36 @@ class ViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        regenerateButton.rx.tap.asObservable()
-            .flatMapLatest { [unowned self] in
-                self.useCase.generateNewWallet()
-                    .flatMap { [unowned self] wallet in self.useCase.saveCurrentWallet(wallet).map { wallet } }
-            }
+        index
+            .map { $0 > 0 }
+            .bind(to: previousButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        previousButton.rx.tap.asObservable()
+            .withLatestFrom(index)
+            .filter { $0 > 0 }
+            .map { $0 - 1 }
             .subscribe(onNext: { [weak self] in
-                self?.wallet.accept($0)
-                self?.showSuccess(with: Text.succeededToRegenerate)
+                self?.index.accept($0)
+            })
+            .disposed(by: disposeBag)
+
+        index
+            .map { $0 < UInt32.max }
+            .bind(to: nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        nextButton.rx.tap.asObservable()
+            .withLatestFrom(index)
+            .filter { $0 < UInt32.max }
+            .map { $0 + 1 }
+            .subscribe(onNext: { [weak self] in
+                self?.index.accept($0)
+            })
+            .disposed(by: disposeBag)
+
+        index.asObservable()
+            .flatMapLatest { [unowned self] in self.useCase.updateIndex($0) }
+            .subscribe(onNext: { [weak self] in
+                self?.showSuccess(with: Text.succeededToChange)
             })
             .disposed(by: disposeBag)
 
@@ -111,6 +137,13 @@ class ViewController: UIViewController {
                 self?.copy($0)
                 self?.showSuccess(with: Text.succeededToCopy)
             })
+            .disposed(by: disposeBag)
+
+        Observable<Int>.interval(5, scheduler: ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global()))
+            .withLatestFrom(hdWallet)
+            .map { $0.transactions }
+            .debug()
+            .subscribe()
             .disposed(by: disposeBag)
     }
 
