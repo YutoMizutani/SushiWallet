@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var copyButton: UIButton!
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var tableView: TransactionHistoryTableView!
 
     private var imageHeightConstraint: NSLayoutConstraint!
@@ -139,10 +140,19 @@ class ViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        let requestTimer = Observable<Int>.interval(5, scheduler: ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global()))
-            .mapToVoid().startWith(())
+        let requestInterval: Float = 5
+        let requestTimer: Observable<Float> = Observable<Int>.interval(0.01, scheduler: ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global()))
+            .startWith(0)
+            .map { Float($0) * 0.01 }
+            .map { $0.truncatingRemainder(dividingBy: requestInterval) }
             .share(replay: 1)
-        let address: Observable<Address> = requestTimer
+
+        requestTimer
+            .map { $0 / requestInterval }
+            .bind(to: progressView.rx.progress)
+            .disposed(by: disposeBag)
+
+        let address: Observable<Address> = requestTimer.filter { $0 == 0 }
             .withLatestFrom(hdWallet)
             .withLatestFrom(index) { try? $0.receiveAddress(index: $1) }.unwrap()
             .share(replay: 1)

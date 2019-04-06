@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -53,7 +52,7 @@
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOf-km-Ck6">
                                         <rect key="frame" x="137.5" y="0.0" width="1" height="44"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.88235294119999996" green="0.90588235289999997" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="65f-VC-SEV"/>
                                         </constraints>
@@ -65,7 +64,7 @@
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAt-kK-Nfe">
                                         <rect key="frame" x="275.5" y="0.0" width="1" height="44"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.88235294119999996" green="0.90588235289999997" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="MLW-WG-ZTn"/>
                                         </constraints>
@@ -82,21 +81,28 @@
                                     <constraint firstItem="FXi-Wb-cSC" firstAttribute="width" secondItem="1RU-bo-K8b" secondAttribute="width" id="q3Q-cO-Wx3"/>
                                 </constraints>
                             </stackView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Iq0-g4-zkB">
+                                <rect key="frame" x="0.0" y="488" width="414" height="2"/>
+                                <color key="progressTintColor" red="0.84510836944599621" green="0.94830371235399691" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ukd-hJ-GQf" customClass="TransactionHistoryTableView" customModule="SushiWallet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="488" width="414" height="374"/>
+                                <rect key="frame" x="0.0" y="490" width="414" height="372"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AoA-2z-7cU" firstAttribute="bottom" secondItem="brH-Iq-CUB" secondAttribute="top" id="7XV-yF-xOy"/>
-                            <constraint firstItem="ukd-hJ-GQf" firstAttribute="top" secondItem="Hlg-Ui-6bH" secondAttribute="bottom" id="AHy-Op-F8T"/>
+                            <constraint firstItem="Iq0-g4-zkB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9gz-v9-Uuu"/>
+                            <constraint firstItem="ukd-hJ-GQf" firstAttribute="top" secondItem="Iq0-g4-zkB" secondAttribute="bottom" id="AHy-Op-F8T"/>
                             <constraint firstItem="W7x-5l-ymb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="8:10" priority="750" id="AMv-de-4s5"/>
                             <constraint firstItem="brH-Iq-CUB" firstAttribute="top" secondItem="W7x-5l-ymb" secondAttribute="bottom" id="HyW-T8-H0y"/>
                             <constraint firstItem="brH-Iq-CUB" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="ImZ-td-9SF"/>
                             <constraint firstItem="AoA-2z-7cU" firstAttribute="centerX" secondItem="W7x-5l-ymb" secondAttribute="centerX" id="Jga-04-tB8"/>
                             <constraint firstItem="W7x-5l-ymb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="L1x-VV-cMq"/>
                             <constraint firstItem="ukd-hJ-GQf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MHR-Dl-eq4"/>
+                            <constraint firstItem="Iq0-g4-zkB" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="MoB-Un-105"/>
                             <constraint firstItem="AoA-2z-7cU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="PbQ-UJ-V4P"/>
                             <constraint firstItem="zmC-I8-bdT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="UOm-Hz-ImD"/>
                             <constraint firstItem="brH-Iq-CUB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XQH-HW-8Dp"/>
@@ -106,6 +112,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ukd-hJ-GQf" secondAttribute="trailing" id="dFy-aP-QuO"/>
                             <constraint firstItem="zmC-I8-bdT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dMR-0r-w2R"/>
                             <constraint firstItem="AoA-2z-7cU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="daj-7C-T2X"/>
+                            <constraint firstItem="Iq0-g4-zkB" firstAttribute="top" secondItem="Hlg-Ui-6bH" secondAttribute="bottom" id="qqV-Uv-9p7"/>
                             <constraint firstItem="Hlg-Ui-6bH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="rxR-dC-kCA"/>
                             <constraint firstItem="Hlg-Ui-6bH" firstAttribute="top" secondItem="brH-Iq-CUB" secondAttribute="bottom" constant="8" id="trl-rJ-0n7"/>
                         </constraints>
@@ -117,6 +124,7 @@
                         <outlet property="copyButton" destination="C5s-d3-TJB" id="FYd-q2-eUv"/>
                         <outlet property="nextButton" destination="FXi-Wb-cSC" id="HQP-ub-uoQ"/>
                         <outlet property="previousButton" destination="1RU-bo-K8b" id="bVX-6a-0GK"/>
+                        <outlet property="progressView" destination="Iq0-g4-zkB" id="xH9-go-kHh"/>
                         <outlet property="qrImageView" destination="W7x-5l-ymb" id="Air-Xf-BF0"/>
                         <outlet property="tableView" destination="ukd-hJ-GQf" id="fxo-Fc-tmA"/>
                         <outlet property="zoomButton" destination="AoA-2z-7cU" id="pLJ-cj-4Zf"/>

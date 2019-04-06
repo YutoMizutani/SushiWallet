@@ -28,7 +28,6 @@ class TransactionHistoryTableView: UITableView {
     }
 
     private func configureView() {
-        refreshControl = UIRefreshControl()
         separatorColor = .clear
         rowHeight = TransactionHistoryTableView.fixedRowHeight
         register(TransactionHistoryTableViewCell.self)
