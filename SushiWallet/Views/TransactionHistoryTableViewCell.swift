@@ -6,19 +6,18 @@
 //  Copyright © 2019 Yuto Mizutani. All rights reserved.
 //
 
+import BitcoinKit
 import UIKit
 
-class TransactionHistoryTableViewCell: UITableViewCell {
+class TransactionHistoryTableViewCell: UITableViewCell, NibLoadable {
+    @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var toLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func inject(_ payment: Payment) {
+        fromLabel.text = payment.from.cashaddr
+        toLabel.text = payment.to.cashaddr
+        amountLabel.text = "\(Decimal(payment.amount) / Decimal(100000000))"
+        print(payment.txid, payment.state, "\(Decimal(payment.amount) / Decimal(100000000))", payment.from, payment.to)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

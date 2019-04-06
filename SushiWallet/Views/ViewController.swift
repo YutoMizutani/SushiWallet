@@ -74,19 +74,19 @@ class ViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        let address: Observable<BitcoinAddress> = Observable.combineLatest(hdWallet, index)
+        let bitcoinAddress: Observable<BitcoinAddress> = Observable.combineLatest(hdWallet, index)
             .map { try? $0.0.changeAddress(index: $0.1) }
             .unwrap()
             .map { BitcoinAddress($0.cashaddr) }
             .share(replay: 1)
 
-        address
+        bitcoinAddress
             .map { $0.generateQRCode() }
             .unwrap()
             .bind(to: qrImageView.rx.image)
             .disposed(by: disposeBag)
 
-        address
+        bitcoinAddress
             .map { $0.value }
             .bind(to: addressTextView.rx.text)
             .disposed(by: disposeBag)
@@ -123,7 +123,7 @@ class ViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        index.asObservable()
+        index.asObservable().skip(1)
             .flatMapLatest { [unowned self] in self.useCase.updateIndex($0) }
             .subscribe(onNext: { [weak self] in
                 self?.showSuccess(with: Text.succeededToChange)
@@ -131,7 +131,7 @@ class ViewController: UIViewController {
             .disposed(by: disposeBag)
 
         copyButton.rx.tap.asObservable()
-            .withLatestFrom(address)
+            .withLatestFrom(bitcoinAddress)
             .map { $0.value }
             .subscribe(onNext: { [weak self] in
                 self?.copy($0)
@@ -139,11 +139,25 @@ class ViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        Observable<Int>.interval(5, scheduler: ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global()))
+        let requestTimer = Observable<Int>.interval(5, scheduler: ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global()))
+            .mapToVoid().startWith(())
+            .share(replay: 1)
+        let address: Observable<Address> = requestTimer
             .withLatestFrom(hdWallet)
-            .map { $0.transactions }
+            .withLatestFrom(index) { try? $0.receiveAddress(index: $1) }.unwrap()
+            .share(replay: 1)
+
+        address
+            .flatMapLatest { [unowned self] in self.useCase.getBalance($0) }
+            .map { "Balance: \($0) satoshi" }
+            .bind(to: balanceLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        address
+            .flatMapLatest { [unowned self] in self.useCase.getTransactions($0) }
             .debug()
-            .subscribe()
+            .map { [SectionOfPayment(items: $0)] }
+            .bind(to: tableView.rx.items(dataSource: tableView.configureDataSource))
             .disposed(by: disposeBag)
     }
 

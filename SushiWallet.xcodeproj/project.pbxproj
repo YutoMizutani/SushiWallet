@@ -20,8 +20,13 @@
 		9977A24F225652D700B2A322 /* TransactionHistoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9977A24E225652D700B2A322 /* TransactionHistoryTableView.swift */; };
 		9977A2522256534200B2A322 /* BCHTestnetWalletUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9977A2512256534200B2A322 /* BCHTestnetWalletUseCase.swift */; };
 		9977A25C2256658E00B2A322 /* BitcoinAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9977A25B2256658E00B2A322 /* BitcoinAddress.swift */; };
-		9977A2602256714000B2A322 /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9977A25F2256714000B2A322 /* RxExtensions.swift */; };
+		9977A2602256714000B2A322 /* ObservableType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9977A25F2256714000B2A322 /* ObservableType+.swift */; };
 		9977A263225678AB00B2A322 /* WalletUserDefaultDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9977A262225678AB00B2A322 /* WalletUserDefaultDataStore.swift */; };
+		99C5F2E72258F5E500590767 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C5F2E62258F5E500590767 /* UITableView+Reusable.swift */; };
+		99C5F2E92258F60300590767 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C5F2E82258F60300590767 /* UIViewController+Rx.swift */; };
+		99C5F2EB2258F63E00590767 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C5F2EA2258F63E00590767 /* NibLoadable.swift */; };
+		99C5F2ED2258F88300590767 /* SectionOfPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C5F2EC2258F88300590767 /* SectionOfPayment.swift */; };
+		99C5F2EF2259073500590767 /* BitcoinKit+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C5F2EE2259073500590767 /* BitcoinKit+.swift */; };
 		E661AC42BF40B6793FA08338 /* Pods_SushiWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5642322FD978A3C262576FF9 /* Pods_SushiWalletTests.framework */; };
 		F34CD1B8B428A4477052C532 /* Pods_SushiWalletUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A342983E643DF0F0A697AA /* Pods_SushiWalletUITests.framework */; };
 /* End PBXBuildFile section */
@@ -67,8 +72,13 @@
 		9977A24E225652D700B2A322 /* TransactionHistoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryTableView.swift; sourceTree = "<group>"; };
 		9977A2512256534200B2A322 /* BCHTestnetWalletUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCHTestnetWalletUseCase.swift; sourceTree = "<group>"; };
 		9977A25B2256658E00B2A322 /* BitcoinAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinAddress.swift; sourceTree = "<group>"; };
-		9977A25F2256714000B2A322 /* RxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
+		9977A25F2256714000B2A322 /* ObservableType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+.swift"; sourceTree = "<group>"; };
 		9977A262225678AB00B2A322 /* WalletUserDefaultDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletUserDefaultDataStore.swift; sourceTree = "<group>"; };
+		99C5F2E62258F5E500590767 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
+		99C5F2E82258F60300590767 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		99C5F2EA2258F63E00590767 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		99C5F2EC2258F88300590767 /* SectionOfPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionOfPayment.swift; sourceTree = "<group>"; };
+		99C5F2EE2259073500590767 /* BitcoinKit+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BitcoinKit+.swift"; sourceTree = "<group>"; };
 		9FE0D366A96C45294340097E /* Pods_SushiWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SushiWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B18160E612444C1155D5D5 /* Pods-SushiWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SushiWallet.release.xcconfig"; path = "Target Support Files/Pods-SushiWallet/Pods-SushiWallet.release.xcconfig"; sourceTree = "<group>"; };
 		C1A342983E643DF0F0A697AA /* Pods_SushiWalletUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SushiWalletUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,10 +152,10 @@
 			isa = PBXGroup;
 			children = (
 				99036C68225447250007F86E /* AppDelegate.swift */,
-				9977A25F2256714000B2A322 /* RxExtensions.swift */,
 				99036C6F225447260007F86E /* Assets.xcassets */,
 				99036C71225447260007F86E /* LaunchScreen.storyboard */,
 				99036C74225447260007F86E /* Info.plist */,
+				99C5F2E52258F5D000590767 /* Extensions */,
 				9977A261225678A000B2A322 /* DataStore */,
 				9977A2502256532900B2A322 /* UseCase */,
 				9977A25A2256657300B2A322 /* Entities */,
@@ -196,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				9977A25B2256658E00B2A322 /* BitcoinAddress.swift */,
+				99C5F2EC2258F88300590767 /* SectionOfPayment.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -206,6 +217,18 @@
 				9977A262225678AB00B2A322 /* WalletUserDefaultDataStore.swift */,
 			);
 			path = DataStore;
+			sourceTree = "<group>";
+		};
+		99C5F2E52258F5D000590767 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9977A25F2256714000B2A322 /* ObservableType+.swift */,
+				99C5F2E82258F60300590767 /* UIViewController+Rx.swift */,
+				99C5F2E62258F5E500590767 /* UITableView+Reusable.swift */,
+				99C5F2EA2258F63E00590767 /* NibLoadable.swift */,
+				99C5F2EE2259073500590767 /* BitcoinKit+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		ADA67C09E12C2095DD0E6245 /* Frameworks */ = {
@@ -455,14 +478,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99C5F2E92258F60300590767 /* UIViewController+Rx.swift in Sources */,
 				99036C6B225447250007F86E /* ViewController.swift in Sources */,
 				9977A24F225652D700B2A322 /* TransactionHistoryTableView.swift in Sources */,
 				99036C69225447250007F86E /* AppDelegate.swift in Sources */,
-				9977A2602256714000B2A322 /* RxExtensions.swift in Sources */,
+				9977A2602256714000B2A322 /* ObservableType+.swift in Sources */,
+				99C5F2EB2258F63E00590767 /* NibLoadable.swift in Sources */,
+				99C5F2E72258F5E500590767 /* UITableView+Reusable.swift in Sources */,
 				9977A25C2256658E00B2A322 /* BitcoinAddress.swift in Sources */,
 				9977A24B225651BC00B2A322 /* TransactionHistoryTableViewCell.swift in Sources */,
+				99C5F2ED2258F88300590767 /* SectionOfPayment.swift in Sources */,
 				9977A263225678AB00B2A322 /* WalletUserDefaultDataStore.swift in Sources */,
 				9977A2522256534200B2A322 /* BCHTestnetWalletUseCase.swift in Sources */,
+				99C5F2EF2259073500590767 /* BitcoinKit+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

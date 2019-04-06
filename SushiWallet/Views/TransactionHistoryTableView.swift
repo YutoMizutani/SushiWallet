@@ -6,7 +6,40 @@
 //  Copyright © 2019 Yuto Mizutani. All rights reserved.
 //
 
+import BitcoinKit
 import RxDataSources
+import UIKit
 
 class TransactionHistoryTableView: UITableView {
+    private static var fixedRowHeight: CGFloat = 44
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configureView()
+    }
+
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        configureView()
+    }
+
+    private func configureView() {
+        refreshControl = UIRefreshControl()
+        separatorColor = .clear
+        rowHeight = TransactionHistoryTableView.fixedRowHeight
+        register(TransactionHistoryTableViewCell.self)
+    }
+
+    lazy var configureDataSource = RxTableViewSectionedReloadDataSource<SectionOfPayment>(configureCell: configureCell)
+
+    lazy var configureCell: RxTableViewSectionedReloadDataSource<SectionOfPayment>.ConfigureCell = { [weak self] _, tableView, indexPath, item in
+        guard let self = self else { return UITableViewCell() }
+        let cell: TransactionHistoryTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.inject(item)
+        return cell
+    }
 }
