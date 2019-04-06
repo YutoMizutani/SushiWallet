@@ -141,8 +141,8 @@ class ViewController: UIViewController {
             .disposed(by: disposeBag)
 
         let requestInterval: Float = 5
-        let requestTimer: Observable<Float> = Observable<Int>.interval(0.01, scheduler: ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global()))
-            .startWith(0)
+        let requestTimer: Observable<Float> = bitcoinAddress.mapToVoid()
+            .flatMapLatest { Observable<Int>.interval(0.01, scheduler: ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global())) }
             .map { Float($0) * 0.01 }
             .map { $0.truncatingRemainder(dividingBy: requestInterval) }
             .share(replay: 1)
