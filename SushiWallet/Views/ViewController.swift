@@ -75,7 +75,7 @@ class ViewController: UIViewController {
             .disposed(by: disposeBag)
 
         let bitcoinAddress: Observable<BitcoinAddress> = Observable.combineLatest(hdWallet, index)
-            .map { try? $0.0.changeAddress(index: $0.1) }
+            .map { try? $0.0.receiveAddress(index: $0.1) }
             .unwrap()
             .map { BitcoinAddress($0.cashaddr) }
             .share(replay: 1)
