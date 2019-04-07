@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     private var imageHeightConstraint: NSLayoutConstraint!
     private let constraints: (min: CGFloat, max: CGFloat) = (100, 300)
 
+    private var peerGroup: PeerGroup?
     private var hdWallet: PublishRelay<HDWallet> = PublishRelay()
     private var index: PublishRelay<UInt32> = PublishRelay()
 
@@ -56,6 +57,22 @@ class ViewController: UIViewController {
     }
 
     private func configureBinding() {
+        Observable.combineLatest(hdWallet, index)
+            .flatMapLatest { [unowned self] in Single.zip(self.useCase.getUsedAddresses($0.0), self.useCase.createPeerGroup()) }
+            .subscribe(onNext: { [unowned self] addresses, peerGroup in
+                self.peerGroup?.stop()
+                self.peerGroup?.delegate = nil
+
+                self.peerGroup = peerGroup
+                peerGroup.delegate = self
+                addresses
+                    .map { [$0.publicKey, $0.data].compactMap { $0 } }
+                    .flatMap { $0 }
+                    .forEach { peerGroup.addFilter($0) }
+                peerGroup.start()
+            })
+            .disposed(by: disposeBag)
+
         rx.viewWillAppear.take(1).mapToVoid()
             .subscribeOn(ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global()))
             .flatMapLatest { [unowned self] in self.useCase.loadHDWallet().asObservable().materialize().take(1) }
@@ -165,7 +182,6 @@ class ViewController: UIViewController {
 
         address
             .flatMapLatest { [unowned self] in self.useCase.getTransactions($0) }
-            .debug()
             .map { [SectionOfPayment(items: $0)] }
             .bind(to: tableView.rx.items(dataSource: tableView.configureDataSource))
             .disposed(by: disposeBag)
@@ -196,3 +212,4 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: PeerGroupDelegate {}

@@ -35,7 +35,7 @@ struct WalletUserDefaultDataStore {
     }
 
     func setMaxIndex(_ index: UInt32) {
-        UserDefaults.standard.set(Int(index), forKey: Keys.current.key)
+        UserDefaults.standard.set(Int(index), forKey: Keys.max.key)
     }
 
     func getMaxIndex() -> UInt32? {

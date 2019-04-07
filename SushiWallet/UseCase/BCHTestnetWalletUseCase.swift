@@ -14,11 +14,13 @@ private protocol WalletUseCaseCore {
 }
 
 protocol HDWalletUseCase {
+    func createPeerGroup() -> Single<PeerGroup>
     func generateNewHDWallet() -> Single<(hdWallet: HDWallet, index: UInt32)>
     func loadHDWallet() -> Single<(hdWallet: HDWallet, index: UInt32)>
     func updateIndex(_ index: UInt32) -> Single<Void>
     func getBalance(_ address: Address) -> Single<Decimal>
     func getTransactions(_ address: Address) -> Single<[Payment]>
+    func getUsedAddresses(_ wallet: HDWallet) -> Single<[Address]>
     func getAllBalances(_ wallet: HDWallet) -> Single<[Decimal]>
     func getAllTransactions(_ wallet: HDWallet) -> Single<[Payment]>
 }
@@ -26,6 +28,18 @@ protocol HDWalletUseCase {
 struct BCHTestnetHDWalletUseCase: WalletUseCaseCore, HDWalletUseCase {
     fileprivate let network: Network = .testnet
     private let dataStore = WalletUserDefaultDataStore()
+
+    /// Create a new peer group
+    func createPeerGroup() -> Single<PeerGroup> {
+        return Single.create(subscribe: { single -> Disposable in
+            let blockStore: BlockStore = try! SQLiteBlockStore.default()
+            let blockChain: BlockChain = BlockChain(network: self.network, blockStore: blockStore)
+            let peerGroup: PeerGroup = PeerGroup(blockChain: blockChain)
+            single(.success(peerGroup))
+
+            return Disposables.create()
+        })
+    }
 
     /// Generate a new HD wallet to data store
     func generateNewHDWallet() -> Single<(hdWallet: HDWallet, index: UInt32)> {
@@ -68,7 +82,7 @@ struct BCHTestnetHDWalletUseCase: WalletUseCaseCore, HDWalletUseCase {
     private func generateHDWallet(from privateKey: PrivateKey) -> Single<HDWallet> {
         return Single.create(subscribe: { single -> Disposable in
             let privateKey = privateKey
-            let wallet = HDWallet(seed: privateKey.raw, network: self.network)
+            let wallet = HDWallet(seed: privateKey.data, network: self.network)
             single(.success(wallet))
 
             return Disposables.create()
@@ -85,8 +99,10 @@ struct BCHTestnetHDWalletUseCase: WalletUseCaseCore, HDWalletUseCase {
                     if index > max {
                         self.dataStore.setMaxIndex(index)
                     }
-                    fallthrough
+                    self.dataStore.setCurrentIndex(index)
+                    return Single.just(())
                 case .error:
+                    self.dataStore.setMaxIndex(index)
                     self.dataStore.setCurrentIndex(index)
                     return Single.just(())
                 case .completed:
@@ -106,7 +122,7 @@ struct BCHTestnetHDWalletUseCase: WalletUseCaseCore, HDWalletUseCase {
     /// Get used max index from data store
     private func getMaxIndex() -> Single<UInt32> {
         return Single.create(subscribe: { single -> Disposable in
-            if let index = self.dataStore.getCurrentIndex() {
+            if let index = self.dataStore.getMaxIndex() {
                 single(.success(index))
             } else {
                 single(.error(RxError.noElements))
@@ -130,7 +146,7 @@ struct BCHTestnetHDWalletUseCase: WalletUseCaseCore, HDWalletUseCase {
     }
 
     /// Get used all addresses in the HD wallet
-    private func getUsedAddresses(_ wallet: HDWallet) -> Single<[Address]> {
+    func getUsedAddresses(_ wallet: HDWallet) -> Single<[Address]> {
         return getMaxIndex()
             .map { (0..<$0).compactMap { try? wallet.receiveAddress(index: $0) } }
     }
