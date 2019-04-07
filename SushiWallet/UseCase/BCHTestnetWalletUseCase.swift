@@ -82,7 +82,7 @@ struct BCHTestnetHDWalletUseCase: WalletUseCaseCore, HDWalletUseCase {
     private func generateHDWallet(from privateKey: PrivateKey) -> Single<HDWallet> {
         return Single.create(subscribe: { single -> Disposable in
             let privateKey = privateKey
-            let wallet = HDWallet(seed: privateKey.data, network: self.network)
+            let wallet = HDWallet(seed: privateKey.raw, network: self.network)
             single(.success(wallet))
 
             return Disposables.create()
