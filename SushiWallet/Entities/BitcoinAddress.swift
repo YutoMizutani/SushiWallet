@@ -14,6 +14,10 @@ struct BitcoinAddress {
         return address
     }
 
+    var removedPrefix: String {
+        return address.split(separator: ":").map { String($0) }.last!
+    }
+
     init(_ address: String) {
         self.address = address
     }

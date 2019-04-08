@@ -23,11 +23,18 @@ protocol HDWalletUseCase {
     func getUsedAddresses(_ wallet: HDWallet) -> Single<[Address]>
     func getAllBalances(_ wallet: HDWallet) -> Single<[Decimal]>
     func getAllTransactions(_ wallet: HDWallet) -> Single<[Payment]>
+    func fetchBalance(_ address: BitcoinAddress) -> Single<Decimal>
+    func fetchTransactions(_ address: BitcoinAddress) -> Single<Transactions>
+    func fetchInsight(_ address: BitcoinAddress) -> Single<UnspentOutput?>
+    func fetchInsight(_ addressess: [BitcoinAddress]) -> Single<UnspentOutputs>
 }
 
 struct BCHTestnetHDWalletUseCase: WalletUseCaseCore, HDWalletUseCase {
     fileprivate let network: Network = .testnet
     private let dataStore = WalletUserDefaultDataStore()
+    private let balanceAPI = BitpayBalanceAPI(.bchTestnet)
+    private let transactionsAPI = BitpayTransactionsAPI(.bchTestnet)
+    private let unspentOutputsAPI = BitpayUnspentOutputsAPI(.bchTestnet)
 
     /// Create a new peer group
     func createPeerGroup() -> Single<PeerGroup> {
@@ -163,5 +170,21 @@ struct BCHTestnetHDWalletUseCase: WalletUseCaseCore, HDWalletUseCase {
             .flatMap { Single.zip($0.map { self.getTransactions($0) }) }
             .map { $0.flatMap { $0 } }
             .map { Array(Set($0)) }
+    }
+
+    func fetchBalance(_ address: BitcoinAddress) -> Single<Decimal> {
+        return balanceAPI.request(address)
+    }
+
+    func fetchTransactions(_ address: BitcoinAddress) -> Single<Transactions> {
+        return transactionsAPI.request(address)
+    }
+
+    func fetchInsight(_ address: BitcoinAddress) -> Single<UnspentOutput?> {
+        return unspentOutputsAPI.request(address).map { $0.first }
+    }
+
+    func fetchInsight(_ addressess: [BitcoinAddress]) -> Single<UnspentOutputs> {
+        return unspentOutputsAPI.request(addressess)
     }
 }

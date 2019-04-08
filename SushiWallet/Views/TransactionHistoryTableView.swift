@@ -29,16 +29,17 @@ class TransactionHistoryTableView: UITableView {
 
     private func configureView() {
         separatorColor = .clear
+        allowsSelection = false
         rowHeight = TransactionHistoryTableView.fixedRowHeight
         register(TransactionHistoryTableViewCell.self)
     }
 
-    lazy var configureDataSource = RxTableViewSectionedReloadDataSource<SectionOfPayment>(configureCell: configureCell)
+    lazy var configureDataSource = RxTableViewSectionedReloadDataSource<SectionOfTransactions>(configureCell: configureCell)
 
-    lazy var configureCell: RxTableViewSectionedReloadDataSource<SectionOfPayment>.ConfigureCell = { [weak self] _, tableView, indexPath, item in
+    lazy var configureCell: RxTableViewSectionedReloadDataSource<SectionOfTransactions>.ConfigureCell = { [weak self] _, tableView, indexPath, item in
         guard let self = self else { return UITableViewCell() }
         let cell: TransactionHistoryTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.inject(item)
+        cell.inject(item.0, address: item.1)
         return cell
     }
 }

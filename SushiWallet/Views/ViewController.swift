@@ -57,22 +57,6 @@ class ViewController: UIViewController {
     }
 
     private func configureBinding() {
-        Observable.combineLatest(hdWallet, index)
-            .flatMapLatest { [unowned self] in Single.zip(self.useCase.getUsedAddresses($0.0), self.useCase.createPeerGroup()) }
-            .subscribe(onNext: { [unowned self] addresses, peerGroup in
-                self.peerGroup?.stop()
-                self.peerGroup?.delegate = nil
-
-                self.peerGroup = peerGroup
-                peerGroup.delegate = self
-                addresses
-                    .map { [$0.publicKey, $0.data].compactMap { $0 } }
-                    .flatMap { $0 }
-                    .forEach { peerGroup.addFilter($0) }
-                peerGroup.start()
-            })
-            .disposed(by: disposeBag)
-
         rx.viewWillAppear.take(1).mapToVoid()
             .subscribeOn(ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global()))
             .flatMapLatest { [unowned self] in self.useCase.loadHDWallet().asObservable().materialize().take(1) }
@@ -157,7 +141,7 @@ class ViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        let requestInterval: Float = 5
+        let requestInterval: Float = 10
         let requestTimer: Observable<Float> = bitcoinAddress.mapToVoid()
             .flatMapLatest { Observable<Int>.interval(0.01, scheduler: ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global())) }
             .map { Float($0) * 0.01 }
@@ -169,20 +153,22 @@ class ViewController: UIViewController {
             .bind(to: progressView.rx.progress)
             .disposed(by: disposeBag)
 
-        let address: Observable<Address> = requestTimer.filter { $0 == 0 }
+        let requestTrigger: Observable<BitcoinAddress> = requestTimer.filter { $0 == 0 }.mapToVoid()
             .withLatestFrom(hdWallet)
-            .withLatestFrom(index) { try? $0.receiveAddress(index: $1) }.unwrap()
+            .withLatestFrom(index) { (wallet: $0, index: $1) }
+            .map { try? $0.wallet.receiveAddress(index: $0.index) }.unwrap()
+            .map { BitcoinAddress($0.cashaddr) }
             .share(replay: 1)
 
-        address
-            .flatMapLatest { [unowned self] in self.useCase.getBalance($0) }
-            .map { "Balance: \($0) satoshi" }
+        requestTrigger
+            .flatMapLatest { [unowned self] in self.useCase.fetchBalance($0) }
+            .map { "Balance: \($0) BCH" }
             .bind(to: balanceLabel.rx.text)
             .disposed(by: disposeBag)
 
-        address
-            .flatMapLatest { [unowned self] in self.useCase.getTransactions($0) }
-            .map { [SectionOfPayment(items: $0)] }
+        requestTrigger
+            .flatMapLatest { [unowned self] address in self.useCase.fetchTransactions(address).map { $0.map { ($0, address) } } }
+            .map { [SectionOfTransactions(items: $0)] }
             .bind(to: tableView.rx.items(dataSource: tableView.configureDataSource))
             .disposed(by: disposeBag)
     }

@@ -9,6 +9,7 @@ target 'SushiWallet' do
   use_frameworks!
 
   # Pods for SushiWallet
+  pod 'Alamofire'
   pod 'BitcoinKit'
   pod 'RxCocoa'
   pod 'RxDataSources'

@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.8.2)
   - BitcoinKit (1.0.2)
   - Differentiator (3.1.0)
   - RxCocoa (4.5.0):
@@ -11,6 +12,7 @@ PODS:
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
+  - Alamofire
   - BitcoinKit
   - RxCocoa
   - RxDataSources
@@ -19,6 +21,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - BitcoinKit
     - Differentiator
     - RxCocoa
@@ -27,6 +30,7 @@ SPEC REPOS:
     - SVProgressHUD
 
 SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   BitcoinKit: 5502c14d72ab665fbe00dc72abd74439a38ef9bc
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
@@ -34,6 +38,6 @@ SPEC CHECKSUMS:
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 0ce3ad56e77fd800f07d38540e93ba883279cadb
+PODFILE CHECKSUM: a156d5a93182f8039fdd4e932de7eaddcb41f468
 
 COCOAPODS: 1.6.1
