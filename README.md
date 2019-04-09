@@ -6,3 +6,5 @@
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/YutoMizutani/SushiWallet/blob/master/LICENSE)
 
 A test environment to receive Bitcoin
+
+![SushiWallet](https://raw.githubusercontent.com/YutoMizutani/SushiWallet/master/pic/out.gif)
