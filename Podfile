@@ -24,6 +24,7 @@ target 'SushiWallet' do
   target 'SushiWalletUITests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Alamofire'
     pod 'BitcoinKit'
     pod 'RxDataSources'
     pod 'SVProgressHUD'
