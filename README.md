@@ -7,4 +7,4 @@
 
 A test environment to receive Bitcoin
 
-![Gif](https://raw.githubusercontent.com/YutoMizutani/SushiWallet/master/pic/out.gif | width=100)
+<img src="https://raw.githubusercontent.com/YutoMizutani/SushiWallet/master/pic/out.gif" width="150">
